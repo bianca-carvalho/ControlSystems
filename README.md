@@ -1,57 +1,48 @@
-# Compensator Design via Root Locus Diagrams  
+# Projeto Compensadores no Domínio da Frequência
 
-This repository contains Python code for designing compensators using root locus diagrams. The compensators implemented include proportional (P), proportional-integral (PI), proportional-derivative (PD), proportional-integral-derivative (PID), phase-lag, and phase-lead compensators.  
+Este repositório contém código em Python para o design de compensadores no domínio da frequência.
 
-Each compensator is implemented with its respective transfer function \( C(s) \) and can be used to analyze and design control systems to meet specific performance requirements.  
+Os compensadores implementados incluem:
+- proporcional (P),
+- proporcional-integral (PI),
+- proporcional-derivativo (PD),
+- proporcional-integral-derivativo (PID),
+- atraso de fase (LAG), e
+- avanço de fase (LEAD).
 
----
+Cada compensador é implementado com sua respectiva função de transferência $C(s)$ e pode ser utilizado para analisar e projetar sistemas de controle, atendendo a requisitos específicos.
 
-## Compensators and Their Transfer Functions  
+## Compensadores e Suas Funções de Transferência
 
-### 1. Proportional (P)  
-Transfer function:  
-\[
-C(s) = K_p
-\]  
+### 1. Proposcional (P)  
 
-### 2. Proportional-Integral (PI)  
-Transfer function:  
-\[
-C(s) = K_p \left( 1 + \frac{1}{T_i s} \right) = K_p + \frac{K_p}{T_i s}
-\]  
+$$C(s) = k_p$$
 
-### 3. Proportional-Derivative (PD)  
-Transfer function:  
-\[
-C(s) = K_p \left( 1 + T_d s \right) = K_p + K_p T_d s
-\]  
+### 2. Proporcional-Integral (PI)  
+É um caso especial do Atraso de Fase: $\alpha \to \infty$
 
-### 4. Proportional-Integral-Derivative (PID)  
-Transfer function:  
-\[
-C(s) = K_p \left( 1 + \frac{1}{T_i s} + T_d s \right) = K_p + \frac{K_p}{T_i s} + K_p T_d s
-\]  
+$$C(s) = \frac{k_ps + k_i}{s} = k_p\frac{s +\frac{k_i}{k_p}}{s}$$
 
-### 5. Phase-Lag Compensator  
-Transfer function:  
-\[
-C(s) = K \frac{T s + 1}{\beta T s + 1}, \quad \beta > 1
-\]  
+### 3. Proporcional-Derivativo (PD)  
+É um caso especial do Avanço de Fase: $\alpha \to 0$
 
-### 6. Phase-Lead Compensator  
-Transfer function:  
-\[
-C(s) = K \frac{\beta T s + 1}{T s + 1}, \quad \beta > 1
-\]  
+$$C(s) = k_p + k_ds$$
 
----
+### 4. Proporcional-Integral-Derivativo (PID)  
 
-## Usage  
-Each Python script is designed to work with root locus diagrams, enabling you to analyze the system and adjust the compensator parameters to achieve desired performance.  
+$$C(s) = k_p+\frac{k_i}{s}+k_ds = \frac{k_ps + k_i + k_d s^2}{s}$$
+
+### 5. Atraso de fase (LAG)
+
+$$C(s) = K \frac{1 + sT}{1 + s\alpha T}, \quad \alpha > 1$$
+
+### 6. Avanço de fase (LEAD)
+
+$$C(s) = K \frac{1 + sT}{1 + s\alpha T}, \quad 0 < \alpha < 1$$
 
 ---
 
 ## Installation  
-Clone this repository using:  
+Clone este repositório utilizando:
 ```bash
 git clone https://github.com/bianca-carvalho/ControlSystems.git
